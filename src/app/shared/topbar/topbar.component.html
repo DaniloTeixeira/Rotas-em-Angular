@@ -2,6 +2,7 @@
   <a class="navbar-brand" routerLink="/">
     <img src="/assets/logo-angular.png" width="70" height="70" routerLink="/" />
   </a>
+
   <button
     class="navbar-toggler"
     type="button"
@@ -22,28 +23,45 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/alunos">Alunos</a>
-      </li>
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
-          id="navbarDropdown"
-          role="button"
           data-toggle="dropdown"
+          routerLink="/alunos"
+          role="button"
           aria-haspopup="true"
           aria-expanded="false"
+        >
+          Alunos
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/alunos/id">Id Aluno</a>
+          <a class="dropdown-item" routerLink="/alunos/id/editar"
+            >Editar Aluno</a
+          >
+          <a class="dropdown-item" routerLink="/alunos/novo">Cadastrar Aluno</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          data-toggle="dropdown"
           routerLink="/cursos"
+          role="button"
+          aria-haspopup="true"
+          aria-expanded="false"
         >
           Cursos
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/curso', idCurso.value]"
-            >Curso Id</a
-          >
+        <div class="dropdown-menu">
+          <a class="dropdown-item" [routerLink]="['cursos', idCurso]">
+            Id Curso
+          </a>
         </div>
       </li>
     </ul>
+
     <div class="col-md-3 text-end">
       <button type="button" class="btn btn-outline-primary">Entrar</button>
       <button type="button" class="btn btn-primary ml-3">Cadastre-se</button>

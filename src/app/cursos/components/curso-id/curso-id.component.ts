@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CursoService } from '../../services/curso';
 
-
 @Component({
   selector: 'app-curso-id',
   templateUrl: './curso-id.component.html',

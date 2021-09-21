@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
 import { Curso } from '../../models/Curso';
 import { delay, map } from 'rxjs/operators';
@@ -14,7 +15,7 @@ export class CursoService {
       { id: 3, name: 'Javascript' },
       { id: 4, name: 'Typescript' },
       { id: 5, name: 'Angular' },
-    ]).pipe(delay(2000));
+    ]).pipe(delay(1000));
   }
 
   getCurso(id: number): Observable<Curso> {
