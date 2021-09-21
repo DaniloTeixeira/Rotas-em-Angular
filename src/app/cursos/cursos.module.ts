@@ -18,7 +18,7 @@ import { CursoEditarComponent } from './components/curso-editar/curso-editar.com
     CursoNaoEncontradoComponent,
     CursoEditarComponent,
   ],
-  providers: [CursoService],
   imports: [CommonModule, CursosRoutingModule, FontAwesomeModule],
+  providers: [CursoService],
 })
 export class CursosModule {}
