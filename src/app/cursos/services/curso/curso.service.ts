@@ -6,16 +6,18 @@ import { delay, map } from 'rxjs/operators';
 
 @Injectable()
 export class CursoService {
+  cursos = [
+    { id: 1, name: 'HTML 5' },
+    { id: 2, name: 'CSS 3' },
+    { id: 3, name: 'Javascript' },
+    { id: 4, name: 'Typescript' },
+    { id: 5, name: 'Angular' },
+  ];
+
   constructor() {}
 
   getCursos(): Observable<Curso[]> {
-    return of([
-      { id: 1, name: 'HTML 5' },
-      { id: 2, name: 'CSS 3' },
-      { id: 3, name: 'Javascript' },
-      { id: 4, name: 'Typescript' },
-      { id: 5, name: 'Angular' },
-    ]).pipe(delay(1000));
+    return of(this.cursos).pipe(delay(1000));
   }
 
   getCurso(id: number): Observable<Curso> {
@@ -29,5 +31,10 @@ export class CursoService {
       }),
       delay(1000)
     );
+  }
+
+  excluirCurso(curso: Curso): Observable<void> {
+    this.cursos = this.cursos.filter((c) => c !== curso);
+    return of(undefined);
   }
 }

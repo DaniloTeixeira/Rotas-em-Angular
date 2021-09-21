@@ -16,13 +16,12 @@ export class CursoDetalheComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private cursoService: CursoService,
-    private activatedRoute: ActivatedRoute
+    private cursoService: CursoService
   ) {}
 
   ngOnInit(): void {
-    this.inscricao = this.route.params.subscribe((params: any) => {
-      this.id = params['id'];
+    this.inscricao = this.route.params.subscribe((params) => {
+      this.id = params.id;
     });
   }
 

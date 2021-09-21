@@ -1,1 +1,16 @@
 <p class="m-5">lista-alunos works!</p>
+
+<div class="container">
+  <h1 class="text-center">Lista de alunos</h1>
+  <ul class="list-group">
+    <a>
+      <li
+        class="list-group-item list-group-item-action list-group-item-primary"
+        *ngFor="let aluno of alunos"
+        [routerLink]="['/cursos', aluno.id]"
+      >
+        {{ aluno.name }}
+      </li>
+    </a>
+  </ul>
+</div>
