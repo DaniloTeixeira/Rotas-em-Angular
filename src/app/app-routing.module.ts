@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
   },
   {
     path: 'cursos',
@@ -17,9 +18,8 @@ const routes: Routes = [
       import('./alunos/alunos.module').then((m) => m.AlunosModule),
   },
   {
-    path: 'login',
-    loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginModule),
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
 ];
 
