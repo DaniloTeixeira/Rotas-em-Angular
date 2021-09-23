@@ -33,7 +33,7 @@ export class AlunoDetalheComponent implements OnInit {
     });
   }
 
-  ngOndDestroy() {
+  ngOnDestroy() {
     this.inscricao.unsubscribe();
   }
 }

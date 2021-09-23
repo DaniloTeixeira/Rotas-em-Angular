@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: ListaAlunosComponent },
   { path: 'novo', component: AlunoFormComponent },
   { path: ':id', component: AlunoDetalheComponent },
-  { path: ':id/editar', component: AlunoFormComponent },
+  { path: 'editar/:id', component: AlunoFormComponent },
 ];
 
 @NgModule({
