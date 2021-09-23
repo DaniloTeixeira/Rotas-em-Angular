@@ -14,6 +14,16 @@ export class AlunoService {
     },
     { id: 2, name: 'Matheus Augusto', email: 'matheus@email.com.br' },
     { id: 3, name: 'José Rubens Veiga Neto', email: 'veiga@email.com.br' },
+    {
+      id: 4,
+      name: 'Mariana Soares de Macedo Teixeira',
+      email: 'mariana@email.com.br',
+    },
+    {
+      id: 5,
+      name: 'Walter Soares de Macedo Jr.',
+      email: 'junior@email.com.br',
+    },
   ];
 
   constructor() {}

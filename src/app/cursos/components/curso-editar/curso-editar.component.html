@@ -1,7 +1,21 @@
-<div class="container mt-5 d-flex flex-column">
-  <h1 class="text-center">Editar curso</h1>
+<div
+  class="
+    container
+    mt-5
+    d-flex
+    flex-column
+    border border-light
+    shadow
+    p-3
+    mb-5
+    bg-light
+    rounded
+  "
+>
+  <h1 class="text-center mt-3">Editar curso</h1>
   <div class="form-group row">
     <div class="col-sm-10">
+      <label class="text-primary">Id</label>
       <input
         [(ngModel)]="curso.id"
         class="form-control form-control-sm"
@@ -14,6 +28,7 @@
   </div>
   <div class="form-group row">
     <div class="col-sm-10">
+      <label class="text-primary">Nome</label>
       <input
         [(ngModel)]="curso.name"
         type="email"
@@ -24,7 +39,7 @@
     </div>
   </div>
   <button
-    class="btn btn-primary align-self-center"
+    class="btn btn-primary align-self-center mb-4"
     type="button"
     style="width: 82.5%"
     routerLink="/cursos"
