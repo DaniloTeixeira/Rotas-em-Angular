@@ -11,3 +11,8 @@ body {
 fa-icon {
   cursor: pointer;
 }
+
+.form-group {
+  display: flex;
+  justify-content: center;
+}

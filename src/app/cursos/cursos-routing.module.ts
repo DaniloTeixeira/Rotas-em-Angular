@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CursoDetalheComponent } from './components/curso-detalhe';
@@ -15,6 +16,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule, FormsModule],
 })
 export class CursosRoutingModule {}
