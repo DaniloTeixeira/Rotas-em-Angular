@@ -20,27 +20,17 @@ export class CursoService {
     return of(this.cursos).pipe(delay(1000));
   }
 
-  // getCurso(id: number): Observable<Curso> {
-  //   return this.getCursos().pipe(
-  //     map((cursos) => {
-  //       const curso = cursos.find((curso) => curso.id === id);
-  //       if (curso) {
-  //         return curso;
-  //       }
-  //       throw new Error('Curso não encontrado');
-  //     }),
-  //     delay(1000)
-  //   );
-  // }
-
-  getCurso(id: number) {
-    for (let i = 0; i < this.cursos.length; i++) {
-      let curso = this.cursos[i];
-      if (curso.id == id) {
-        return curso;
-      }
-    }
-    return null;
+  getCurso(id: number): Observable<Curso> {
+    return this.getCursos().pipe(
+      map((cursos) => {
+        const curso = cursos.find((curso) => curso.id === id);
+        if (curso) {
+          return curso;
+        }
+        throw new Error('Curso não encontrado');
+      }),
+      delay(500)
+    );
   }
 
   excluirCurso(curso: Curso): Observable<void> {

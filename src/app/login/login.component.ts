@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Usuario } from './models/Usuario';
+import { SignInRequest } from './models/SignInRequest';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -9,13 +10,23 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  usuario: Usuario = new Usuario();
+  email: string;
+  password: string;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  fazerLogin(): void {
-    this.authService.fazerLogin(this.usuario);
+  signIn(): void {
+    this.authService
+      .signIn(new SignInRequest({ email: this.email, password: this.password }))
+      .subscribe(
+        () => {
+          this.router.navigate(['/']);
+        },
+        () => {
+          alert('Credenciais incorretas');
+        }
+      );
   }
 }

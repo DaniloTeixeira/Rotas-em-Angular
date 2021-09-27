@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Aluno } from '../../models/Aluno';
 import { AlunoService } from '../../services/aluno';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-aluno-detalhe',
@@ -11,29 +10,28 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./aluno-detalhe.component.css'],
 })
 export class AlunoDetalheComponent implements OnInit {
-  // alunos: Aluno[];
-  aluno: any;
-  inscricao: Subscription;
+  id: number;
+  aluno: Aluno;
 
   constructor(
     private route: ActivatedRoute,
     private alunoService: AlunoService
   ) {}
 
-  // ngOnInit(): void {
-  //   this.alunoService.getAlunos().subscribe((alunos) => {
-  //     this.alunos = alunos;
-  //   });
-  // }
+  ngOnInit(): void {
+    this.loadParams();
+    this.findAluno();
+  }
 
-  ngOnInit() {
-    this.inscricao = this.route.params.subscribe((params: any) => {
-      let id = params['id'];
-      this.aluno = this.alunoService.getAluno(id);
+  private findAluno(): void {
+    this.alunoService.getAluno(this.id).subscribe((aluno) => {
+      this.aluno = aluno;
     });
   }
 
-  ngOnDestroy() {
-    this.inscricao.unsubscribe();
+  private loadParams(): void {
+    this.route.params.subscribe((params: any) => {
+      this.id = Number(params.id);
+    });
   }
 }

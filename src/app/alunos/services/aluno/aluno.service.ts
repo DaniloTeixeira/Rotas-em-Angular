@@ -32,27 +32,17 @@ export class AlunoService {
     return of(this.alunos).pipe(delay(1000));
   }
 
-  // getAluno(id: number): Observable<Aluno> {
-  //   return this.getAlunos().pipe(
-  //     map((alunos) => {
-  //       const aluno = alunos.find((aluno) => aluno.id === id);
-  //       if (aluno) {
-  //         return aluno;
-  //       }
-  //       throw new Error('Aluno não encontrado');
-  //     }),
-  //     delay(1000)
-  //   );
-  // }
-
-  getAluno(id: number) {
-    for (let i = 0; i < this.alunos.length; i++) {
-      let aluno = this.alunos[i];
-      if (aluno.id == id) {
-        return aluno;
-      }
-    }
-    return null;
+  getAluno(id: number): Observable<Aluno> {
+    return this.getAlunos().pipe(
+      map((alunos) => {
+        const aluno = alunos.find((aluno) => aluno.id === id);
+        if (aluno) {
+          return aluno;
+        }
+        throw new Error('Aluno não encontrado');
+      }),
+      delay(500)
+    );
   }
 
   excluirAluno(aluno: Aluno): Observable<void> {

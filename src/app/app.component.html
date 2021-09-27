@@ -1,4 +1,4 @@
-<app-topbar *ngIf="isLogged"></app-topbar>
+<app-topbar *ngIf="isLogged$ | async"></app-topbar>
 
 <!-- O componente da rota é renderizado dentro da tag abaixo, deve existir apenas uma por projeto -->
 <router-outlet></router-outlet>

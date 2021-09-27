@@ -8,14 +8,9 @@ import { AuthService } from './login/services/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  isLogged = false;
+  isLogged$ = this.authService.isLogged$;
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.authService.isLoggedEmitter.subscribe((login) => {
-      this.isLogged = login;
-      console.log('Usuário logado component');
-    });
-  }
+  ngOnInit(): void {}
 }
