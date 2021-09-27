@@ -14,7 +14,7 @@ export class AlunoDetalheComponent implements OnInit {
   aluno: Aluno;
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private alunoService: AlunoService
   ) {}
 
@@ -30,7 +30,7 @@ export class AlunoDetalheComponent implements OnInit {
   }
 
   private loadParams(): void {
-    this.route.params.subscribe((params: any) => {
+    this.activatedRoute.params.subscribe((params: any) => {
       this.id = Number(params.id);
     });
   }

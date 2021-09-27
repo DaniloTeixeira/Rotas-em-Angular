@@ -31,7 +31,7 @@ export class CursoDetalheComponent implements OnInit {
 
   private loadParams(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.id = params.id;
+      this.id = Number(params.id);
     });
   }
 }
