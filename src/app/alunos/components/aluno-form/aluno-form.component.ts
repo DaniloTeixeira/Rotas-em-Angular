@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap, take } from 'rxjs/operators';
 import { AlunoService } from '../../services/aluno';
 
 @Component({
@@ -10,25 +10,58 @@ import { AlunoService } from '../../services/aluno';
   styleUrls: ['./aluno-form.component.css'],
 })
 export class AlunoFormComponent implements OnInit {
-  aluno: any;
-  inscricao: Subscription;
+  id: number;
+  name: string;
+  email: string;
 
   constructor(
+    private router: Router,
     private alunoService: AlunoService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    this.inscricao = this.route.params.subscribe((params: any) => {
-      let id = params['id'];
-      this.aluno = this.alunoService.getAluno(id);
-      if (this.aluno === null) {
-        this.aluno = {};
-      }
+  ngOnInit(): void {
+    this.loadAluno();
+  }
+
+  private loadAluno(): void {
+    this.activatedRoute.params.subscribe(({ id }) => {
+      this.alunoService.getAluno(Number(id)).subscribe((aluno) => {
+        this.id = aluno.id;
+        this.name = aluno.name;
+        this.email = aluno.email;
+      });
     });
   }
 
-  ngOnDestroy() {
-    this.inscricao.unsubscribe();
+  // private loadAluno(): void {
+  //   this.activatedRoute.params
+  //     .pipe(
+  //       take(1),
+  //       switchMap(({ id }) => this.alunoService.getAluno(Number(id)))
+  //     )
+  //     .subscribe((aluno) => {
+  //       this.id = aluno.id;
+  //       this.name = aluno.name;
+  //       this.email = aluno.email;
+  //     });
+  // }
+
+  goToList(): void {
+    this.router.navigate(['../..'], { relativeTo: this.activatedRoute });
+    // this.router.navigate(['alunos'], );
+  }
+
+  editarAluno(): void {
+    this.alunoService
+      .editarAluno({
+        id: this.id,
+        name: this.name,
+        email: this.email,
+      })
+      .subscribe(() => {
+        alert('Registro alterado com sucesso!');
+        this.goToList();
+      });
   }
 }

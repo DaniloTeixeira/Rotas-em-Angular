@@ -37,4 +37,12 @@ export class CursoService {
     this.cursos = this.cursos.filter((c) => c !== curso);
     return of(undefined);
   }
+
+  editarCurso(curso: Curso): Observable<void> {
+    const cursoEncontrado = this.cursos.find((c) => c.id === curso.id);
+    if (cursoEncontrado) {
+      cursoEncontrado.name = curso.name;
+    }
+    return of(undefined);
+  }
 }

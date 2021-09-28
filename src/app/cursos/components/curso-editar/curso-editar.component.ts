@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CursoService } from '../../services/curso';
 
 @Component({
@@ -9,25 +8,53 @@ import { CursoService } from '../../services/curso';
   styleUrls: ['./curso-editar.component.css'],
 })
 export class CursoEditarComponent implements OnInit {
-  curso: any;
-  inscricao: Subscription;
+  id: number;
+  name: string;
 
   constructor(
+    private router: Router,
     private cursoService: CursoService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {
-    this.inscricao = this.route.params.subscribe((params: any) => {
-      let id = params['id'];
-      this.curso = this.cursoService.getCurso(id);
-      if (this.curso === null) {
-        this.curso = {};
-      }
-    });
+  ngOnInit(): void {
+    this.loadCurso();
   }
 
-  ngOnDestroy() {
-    this.inscricao.unsubscribe();
+  private loadCurso(): void {
+    this.activatedRoute.params.subscribe(({ id }) => {
+      this.cursoService.getCurso(Number(id)).subscribe((curso) => {
+        this.id = curso.id;
+        this.name = curso.name;
+      });
+    });
+  }
+  // private loadCurso(): void {
+  //   this.activatedRoute.params
+  //     .pipe(
+  //       take(1),
+  //       switchMap(({ id }) => this.cursoService.getCurso(Number(id)))
+  //     )
+  //     .subscribe((curso) => {
+  //       this.id = curso.id;
+  //       this.name = curso.name;
+  //     });
+  // }
+
+  goToList(): void {
+    this.router.navigate(['../..'], { relativeTo: this.activatedRoute });
+    // this.router.navigate(['cursos'], );
+  }
+
+  editarCurso(): void {
+    this.cursoService
+      .editarCurso({
+        id: this.id,
+        name: this.name,
+      })
+      .subscribe(() => {
+        alert('Registro alterado com sucesso!');
+        this.goToList();
+      });
   }
 }

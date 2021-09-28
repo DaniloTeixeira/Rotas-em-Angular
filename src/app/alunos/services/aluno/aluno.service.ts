@@ -12,8 +12,16 @@ export class AlunoService {
       name: 'Danilo Rodrigues Teixeira',
       email: 'danilo@email.com.br',
     },
-    { id: 2, name: 'Matheus Augusto', email: 'matheus@email.com.br' },
-    { id: 3, name: 'José Rubens Veiga Neto', email: 'veiga@email.com.br' },
+    {
+      id: 2,
+      name: 'Matheus Augusto',
+      email: 'matheus@email.com.br',
+    },
+    {
+      id: 3,
+      name: 'José Rubens Veiga Neto',
+      email: 'veiga@email.com.br',
+    },
     {
       id: 4,
       name: 'Mariana Soares de Macedo Teixeira',
@@ -47,6 +55,15 @@ export class AlunoService {
 
   excluirAluno(aluno: Aluno): Observable<void> {
     this.alunos = this.alunos.filter((c) => c !== aluno);
+    return of(undefined);
+  }
+
+  editarAluno(aluno: Aluno): Observable<void> {
+    const alunoEncontrado = this.alunos.find((a) => a.id === aluno.id);
+    if (alunoEncontrado) {
+      alunoEncontrado.name = aluno.name;
+      alunoEncontrado.email = aluno.email;
+    }
     return of(undefined);
   }
 }

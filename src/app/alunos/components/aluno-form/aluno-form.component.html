@@ -17,7 +17,7 @@
     <div class="col-sm-10">
       <label class="text-primary">Id</label>
       <input
-        [(ngModel)]="aluno.id"
+        [(ngModel)]="id"
         class="form-control form-control-sm"
         id="disabledInput"
         type="text"
@@ -30,7 +30,7 @@
     <div class="col-sm-10">
       <label class="text-primary">Nome</label>
       <input
-        [(ngModel)]="aluno.name"
+        [(ngModel)]="name"
         type="text"
         class="form-control form-control-sm"
         id="colFormLabelSm"
@@ -42,7 +42,7 @@
     <div class="col-sm-10">
       <label class="text-primary">E-mail</label>
       <input
-        [(ngModel)]="aluno.email"
+        [(ngModel)]="email"
         type="email"
         class="form-control form-control-sm"
         id="colFormLabelSm"
@@ -54,7 +54,7 @@
     class="btn btn-primary align-self-center mb-4"
     type="button"
     style="width: 82.5%"
-    routerLink="/alunos"
+    (click)="editarAluno()"
   >
     Salvar alterações
   </button>
