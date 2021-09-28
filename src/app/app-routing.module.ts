@@ -27,13 +27,19 @@ const routes: Routes = [
   {
     path: '',
     canActivate: [AuthGuard],
-    canActivateChild: [CursosGuard],
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    //direciona uruário para tela de login, caso rota digitada não exista, deixar sempre por último
+    path: '**',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes /*, { useHash: true }*/)], // utilizar hash nas rotas
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
