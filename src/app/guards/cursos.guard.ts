@@ -6,7 +6,7 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { AuthService } from '../login/services/auth.service';
+import { AuthService } from '../login/services/auth/auth.service';
 
 @Injectable()
 export class CursosGuard implements CanActivateChild {

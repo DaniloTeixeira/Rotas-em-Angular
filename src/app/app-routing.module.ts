@@ -30,12 +30,18 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
-    //direciona uruário para tela de login, caso rota digitada não exista, deixar sempre por último
-    path: '**',
+    path: 'github',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginModule),
+      import('./github/github.module').then((m) => m.GithubModule),
   },
+  // {
+  //   //direciona uruário para tela de login, caso rota digitada não exista, deixar sempre por último
+  //   path: '**',
+  //   canActivate: [AuthGuard],
+  //   loadChildren: () =>
+  //     import('./login/login.module').then((m) => m.LoginModule),
+  // },
 ];
 
 @NgModule({

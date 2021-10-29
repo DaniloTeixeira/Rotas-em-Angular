@@ -1,0 +1,20 @@
+<h1 class="titulo text-center">API para busca de usuários do Github</h1>
+
+<div class="input-group" style="width: 700px; margin: auto">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Digite o nome do usuário"
+    [(ngModel)]="inputValue"
+  />
+  <div class="input-group-append">
+    <button
+      class="btn btn-outline-primary"
+      type="button"
+      routerLink="result/{{ inputValue }}"
+      [disabled]="!inputValue"
+    >
+      BUSCAR
+    </button>
+  </div>
+</div>

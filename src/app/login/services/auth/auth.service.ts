@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { delay, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { SignInRequest } from '../models/SignInRequest';
-import { TokenResponse } from '../models/TokenResponse';
+import { SignInRequest } from '../../models/SignInRequest';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { TokenResponse } from '../../models/TokenResponse';
 
 @Injectable()
 export class AuthService {

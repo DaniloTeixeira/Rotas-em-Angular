@@ -1,0 +1,43 @@
+<div style="width: 400px; margin: auto">
+  <img
+    class="picture mt-3"
+    [src]="user?.avatar_url"
+    width="350px"
+    height="350px"
+  />
+  <ul class="list-group mt-5">
+    <li class="list-group-item list-group-item-dark h4">
+      USUÁRIO: {{ user?.login }}
+    </li>
+    <li class="list-group-item">NOME: {{ user?.name }}</li>
+    <li class="list-group-item">DESCRIÇÃO: {{ user?.bio }}</li>
+    <li class="list-group-item">URL: {{ user?.html_url }}</li>
+    <li class="list-group-item">SEGUIDORES: {{ user?.followers }}</li>
+    <li class="list-group-item">SEGUINDO: {{ user?.following }}</li>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Digite o nome do repositório"
+    />
+    <div class="row">
+      <div class="col-6">
+        <button
+          class="btn btn-outline-primary mt-2 w-100"
+          type="button"
+          routerLink="../../"
+        >
+          VOLTAR
+        </button>
+      </div>
+      <div class="col-6">
+        <button
+          class="btn btn-outline-success mt-2 w-100"
+          type="button"
+          routerLink=""
+        >
+          BUSCAR
+        </button>
+      </div>
+    </div>
+  </ul>
+</div>

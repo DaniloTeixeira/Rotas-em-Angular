@@ -1,0 +1,15 @@
+.picture {
+  margin-left: 25px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  transition: 1s;
+  box-shadow: #00000096 15px 15px 20px 5px;
+}
+
+.picture:hover {
+  transform: scale(1.1);
+}
+
+ul li {
+  border-radius: 5px;
+}
