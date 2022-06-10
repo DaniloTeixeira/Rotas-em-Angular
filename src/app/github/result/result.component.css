@@ -1,7 +1,8 @@
 .picture {
   margin-left: 25px;
   border-radius: 50%;
-  border: 1px solid gray;
+  border-bottom: 2px solid white;
+  border-right: 3px solid white;
   transition: 1s;
   box-shadow: #00000096 15px 15px 20px 5px;
 }

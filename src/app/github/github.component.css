@@ -9,4 +9,6 @@
   margin: 3rem 38.2rem;
   box-shadow: #00000096 15px 15px 20px 5px;
   border-radius: 5px;
+  border-bottom: 2px solid white;
+  border-right: 3px solid white;
 }
